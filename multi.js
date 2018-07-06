@@ -261,7 +261,7 @@ module.exports = Class.create({
 		this.logDebug(10, "Broadcasting message: " + type, message);
 		
 		var client = dgram.createSocket('udp4');
-		var message = new Buffer( JSON.stringify(message) + "\n" );
+		var message = Buffer.from( JSON.stringify(message) + "\n" );
 		client.bind( 0, function() {
 			client.setBroadcast( true );			
 			client.send(message, 0, message.length, self.config.get('comm_port'), self.broadcastIP, function(err) {
@@ -278,7 +278,9 @@ module.exports = Class.create({
 		var ifaces = os.networkInterfaces();
 		var addrs = [];
 		for (var key in ifaces) {
-			addrs = addrs.concat( addrs, ifaces[key] );
+			if (ifaces[key] && ifaces[key].length) {
+				Array.from(ifaces[key]).forEach( function(item) { addrs.push(item); } );
+			}
 		}
 		var addr = Tools.findObject( addrs, { family: 'IPv4', internal: false } );
 		if (addr && addr.address && addr.address.match(/^\d+\.\d+\.\d+\.\d+$/)) {
