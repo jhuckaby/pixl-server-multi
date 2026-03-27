@@ -1,6 +1,6 @@
 {
 	"name": "pixl-server-multi",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A multi-server cluster manager component for pixl-server.",
 	"author": "Joseph Huckaby <jhuckaby@gmail.com>",
 	"homepage": "https://github.com/jhuckaby/pixl-server-multi",
@@ -21,7 +21,7 @@
 		"netmask": "2.0.2",
 		"pixl-server": "^1.0.37",
 		"pixl-class": "^1.0.3",
-		"pixl-tools": "^1.0.29"
+		"pixl-tools": "^2.0.2"
 	},
 	"devDependencies": {
 		
